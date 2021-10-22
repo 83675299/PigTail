@@ -1,0 +1,511 @@
+/* <div class="card_group">
+                <div class="poker_container cargroup">
+                    <div class="poker">
+                        <div class="number"></div>
+                        <div class="color_size meihua"></div>
+                        <div class="back disappear"></div>
+                        <div class="tip iconfont icon-hongtao icon-cheng">
+                            <span class="sum">10</span>
+                        </div>
+                    </div>
+                </div>
+            </div> */
+/* common 开始*/
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.disappear{
+    display: none;
+}
+.out_container{
+    height: 1000px;
+    background-color: black;
+    /* background: -250px -100px/cover url(./back_img/back_ground2.jpg); */
+}
+.game_container{
+    width: 1000px;
+    height: 600px;
+    background-color: green;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    background: -250px 0px/cover url(./back_img/back_ground.jpg);
+}
+/* 音乐开始 */
+.background_audio{
+    height: 25px;
+    position: absolute;
+    left: 10px;
+    top: 20px;
+}
+/* 音乐结束 */
+/* 扑克牌开始*/
+/* <div class="poker">
+        <div class="number"></div>
+        <div class="color_size meihua"></div>
+        <div class="back disappear"></div>
+    </div> */
+.out_container .game_container .lay{
+    width: 90px;
+    height: 115px;
+    position: absolute;
+    left: 300px;
+    top: 100px;
+
+}
+.out_container .game_container .card_group{
+    width: 90px;
+    height: 115px;
+    left: 600px;
+    top: 100px;
+    position: absolute;
+}
+.out_container .game_container .user1{
+    /* height: 115px;
+    left: 50px;
+    top: 450px; */
+    height: 115px;
+    left: 20px;
+    top: 330px;
+    padding: 70px 30px 30px 30px;
+    position: absolute;
+    border: 8px dotted rgb(143, 154, 155);
+    border-radius: 40px;
+}
+.user1.active,.user2.active{
+    border-color: rgb(104,184,249) !important;
+}
+.out_container .game_container .user2{
+    height: 115px;
+    left: 540px;
+    top: 330px;
+    padding: 70px 30px 30px 30px;
+    position: absolute;
+    border: 8px dotted rgb(143, 154, 155);
+    border-radius: 40px;
+}
+/* 托管图标 开始*/
+.iconfont.icon-tuoguan{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    color:rgb(143, 154, 155);
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.iconfont.icon-tuoguan:hover{
+    background-color: rgb(106, 104, 249);
+}
+.iconfont.icon-tuoguan.active{
+    
+    color: rgb(54, 210, 238);
+    border-radius: 50%;
+}
+/* 托管图标 结束*/
+.poker_container{
+    width: 80px;
+    height: 105px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 2px dotted white;
+    float: left;
+    position: relative;
+    margin: 5px;
+    
+    /* 放置区left 300px  right 600px*/
+    /* 用户区域 left:100  top 450*/
+    /* 然后left逐步加100 */
+}
+
+.poker{
+    width: 63px;
+    height: 88px;
+    border-radius: 4px;
+    position: absolute;
+    left: 613px;
+    top: 112px;
+    transition :all 0.6s linear 0.7s;
+    box-shadow: 1px 1px 2px ;
+    overflow: hidden;
+}
+/* .poker:hover{
+    transform: translate(50px,50px);
+} */
+.front{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    backface-visibility: hidden;
+    transform :perspective(600px) rotateY(180deg);
+    transition :all .6s linear ;
+}
+.back{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition :all .6s linear ;
+    width: 100%;
+    height: 100%;
+    background :-21px -10px/108px 104px url(./poker_img/back.png);
+    backface-visibility: hidden;
+    transform :perspective(600px) rotateY(0deg);
+}
+/*旋转*/
+/* 给poker加rotate就可以旋转 */
+.poker.rotate .front{
+    transform: perspective(600px) rotateY(0deg);
+}
+.poker.rotate .back{
+    transform: perspective(600px) rotateY(-180deg);
+}
+/* 旋转 */
+
+/* 移动 */
+/* var div = document.getElementsByClassName('poker')[0];
+        div.addEventListener('click',function(){
+            console.log('eee');
+            div.style.transform = 'translate(50px,50px)';
+            // div.style.transition = 'all 2s linear';
+        },false) */
+
+/* 移动 */
+.number{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 5px;
+    top: 5px;
+}
+.color_size{
+    /* 花色大小 */
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    /* 黑桃：0 0 */
+    /* 方块 0 -30 */
+    /* 梅花 -30 -30 */
+    /* 红桃 -30 0 */
+    /* 大小60px */ 
+}
+.heitao{
+    background: no-repeat 0px 0px/60px url(./poker_img/poker_color.png);
+}
+.hongtao{
+    background: no-repeat -30px 0px/60px url(./poker_img/poker_color.png);
+}
+.fangkuai{
+    background: no-repeat 0px -30px/60px url(./poker_img/poker_color.png);
+}
+.meihua{
+    background: no-repeat -30px -30px/60px url(./poker_img/poker_color.png);
+}
+.ceshi{
+    position: absolute;
+    left: 200px;
+    width: 80px;
+    height: 90px;
+    font-size: 50px;
+}
+/* tip 开始 */
+.tip{
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    /* background-color: grey; */
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: -25px;
+    font-size: 20px;
+}
+.tip::after,.tip::before{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+.tip::after{
+    left: 15px;
+}
+.tip::before{
+    left: 0px;
+}
+.tip .sum{
+    position: absolute;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+}
+.lay .tip:nth-child(1){
+    left: -150px;
+    top: 0px;
+}
+.lay .tip:nth-child(2){
+    left: -150px;
+    top: 25px;
+}
+.lay .tip:nth-child(3){
+    left: -150px;
+    top: 50px;
+}
+.lay .tip:nth-child(4){
+    left: -150px;
+    top: 75px;
+}
+.card_group .tip:nth-child(1){
+    left: 100px;
+    top: 0px;
+}
+.card_group .tip:nth-child(2){
+    left: 100px;
+    top: 25px;
+}
+.card_group .tip:nth-child(3){
+    left: 100px;
+    top: 50px;
+}
+.card_group .tip:nth-child(4){
+    left: 100px;
+    top: 75px;
+}
+/* tip 结束 */
+
+
+/* 扑克牌结束 */
+
+/* 蒙层与按钮 */
+.out_container .game_container .mengceng{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0,0.5);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 500;
+    background: -250px 0px/cover url(./back_img/back_ground2.jpg)
+}
+
+/*  */
+.out_container .game_container .mengceng .button{
+    width: 250px;
+    height: 50px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: lightblue;
+    margin: 0, auto;
+    margin: 0px auto;
+    border-radius: 30px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+    box-shadow: 8px 8px 16px ;
+
+}
+.out_container .game_container .mengceng .button:hover{
+    cursor: pointer;
+    border: 4px solid black;
+}
+.out_container .game_container .mengceng .winner{
+    width: 750px;
+    height: 50px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: lightblue;
+    margin: 0, auto;
+    margin: 0px auto;
+    border-radius: 10px;
+    top:80px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.out_container .game_container .mengceng .two_person,.out_container .game_container .mengceng .online_towperson
+,.out_container .game_container .mengceng .create_room{
+    top: 150px;
+}
+.out_container .game_container .mengceng .one_person,.out_container .game_container .mengceng .online_robot,
+.out_container .game_container .mengceng .join_room{
+    top: 250px;
+}
+.out_container .game_container .mengceng .online_battle{
+    top: 350px;
+}
+.out_container .game_container .mengceng .input{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    position:fixed;
+    left: 0px;
+    top: 80px;
+    
+    z-index: 2;
+}
+.out_container .game_container .mengceng input{
+    font-size: 20px;
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    border : 2px solid black;
+}
+.out_container .game_container .mengceng .icon-zuofanye-xue{
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    left: 280px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 2;
+    cursor: pointer;
+    color: grey;
+}
+.out_container .game_container .mengceng .icon-youfanye{
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 280px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 2;
+    cursor: pointer;
+    color: grey;
+}
+.out_container .game_container .mengceng .icon-youfanye:hover,
+.out_container .game_container .mengceng .icon-zuofanye-xue:hover{
+    color: lightblue;
+}
+.out_container .game_container .mengceng{
+    height: 100%;
+    transition: all 0.2 linear;
+}
+.out_container .game_container .mengceng .one_page{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    float: left;
+    padding: 75px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.out_container .game_container .mengceng .page_number{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    position: absolute;
+    top: 550px;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    border: 1px solid lightblue;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 50%;
+    z-index: 5;
+} 
+.out_container .game_container .mengceng .one_page .one_match{
+    width: 425px;
+    height: 90px;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    box-shadow: 1px 1px 2px ;
+}
+/* tip_button 开始*/
+.tip_button.icon-tishi{
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 900px;
+    top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 45px;
+    font-size: 35px;
+    border-radius: 50%;
+    color: gray;
+}
+.tip_button.icon-tishi:hover{
+    background-color: rgb(106, 104, 249);
+}
+.tip_button.icon-tishi.active{
+    color: yellow;
+}
+.group_color_tip.icon-dadantoushi{
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 620px;
+    top: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 45px;
+    font-size: 30px;
+    border-radius: 50%;
+    color: gray;
+}
+.group_color_tip.icon-dadantoushi:hover{
+    background-color: rgb(106, 104, 249);
+}
+.group_color_tip.icon-dadantoushi.active{
+    color: lightblue;
+}
+.tip_anjian{
+    position: absolute;
+    font-size: 25px;
+    top: 525px;
+    font-weight: bolder;
+    
+}
+.tow_anjian{
+    top: 225px;
+}
+.tip_anjians{
+    display: none;
+}
+.tip_button.icon-tishi.active +.tip_anjians{
+    display: block;
+}
+
+/* tip_button 结束*/
+/* 蒙层与按钮结束 */
+/* 音频 开始*/
+
+/* 音频 结束*/
+
+
+/* common */

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./set.css">
+    <link rel="stylesheet" href="./poker.css">
+    <link rel="stylesheet" href="./iconfont.css">
+    <script src="./interface.js"></script>
+    <script src="./poker.js"></script>
+    
+</head>
+<body>
+    <audio src="./audio/background.mp3" class="background_audio" autoplay loop controls>
+        背景音乐
+    </audio>
+    
+    <div class="out_container">
+        <!-- 外层黑体 -->
+        <div class="game_container">
+            <!-- 游戏界面 -->
+            <div class="lay">
+                <!-- 判定牌堆 -->
+                <div class="poker_container ">
+                    <!-- 卡牌放置区域的一个白色框 -->
+                    <div class="tip iconfont icon-heitao icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                    <div class="tip iconfont icon-hongtao icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                    <div class="tip iconfont icon-meihua icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                    <div class="tip iconfont icon-fangkuai icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card_group">
+                <!-- 卡组 -->
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-heitao icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                    <div class="tip iconfont icon-hongtao icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                    <div class="tip iconfont icon-meihua icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                    <div class="tip iconfont icon-fangkuai icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user1 ">
+                <!-- 用户1区域 -->
+                <div class="iconfont icon-tuoguan "></div>
+                <!-- 托管按键 -->
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-heitao icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-hongtao icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-meihua icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-fangkuai icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user2 ">
+                <!-- 用户2 -->
+                <div class="iconfont icon-tuoguan "></div>
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-heitao icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-hongtao icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-meihua icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+                <div class="poker_container ">
+                    <div class="tip iconfont icon-fangkuai icon-cheng">
+                        <span class="sum">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="poker disappear">
+                <div class="front">
+                    <div class="number">12</div>
+                    <div class="color_size"></div>
+                </div>
+                <div class="back"></div>
+            </div>
+            
+            <div class="mengceng start ">
+                <!-- 开始界面 -->
+                <div class="button two_person">双人对战<img src="" alt=""></div>
+                <div class="button one_person">人机对战<img src="" alt=""></div>
+                <div class="button online_battle">在线对战<img src="" alt=""></div>
+            </div>
+            <div class="mengceng online-type disappear">
+                <!-- 在线对战模式选择 -->
+                <div class="button online_towperson">在线玩家对战</div>
+                <div class="button online_robot">在线人机对战</div>
+            </div>
+            <div class="mengceng end disappear">
+                <!-- 结束界面 -->
+                <div class="winner"></div>
+                <div class="button two_person">继续游戏<img src="" alt=""></div>
+                <!-- 继续游戏 模式不变 继续游戏 -->
+                <div class="button one_person">退出游戏<img src="" alt=""></div>
+                <!-- 退出游戏 重选模式 -->
+            </div>
+            <div class="mengceng create_or_join disappear">
+                <!-- 进入在线对战 并选择模式后 选择是创建房间 还是加入房间 -->
+                <div class="button create_room">创建房间</div>
+                <div class="button join_room">加入房间</div>
+            </div>
+            <div class="mengceng input_uuid disappear">
+                <!-- 按下加入房间后 让用户输入uuid 并展现各个游戏房间uuid -->
+                <div class="input"><input type="text" placeholder="请输入房间uuid"></div>
+                <div class="iconfont icon-zuofanye-xue"></div>
+                <div class="iconfont icon-youfanye"></div>
+                <div class="show " >
+                    <!-- 展现房间uuid的界面 -->
+                    <div class="one_page disappear">
+                        <!-- 一页uuid 用于js复制 -->
+                        <div class="one_match ">
+                            <!-- 一个uuid -->
+                            <h1>uuid: </h1>
+                            <h1>host_id: </h1>
+                            <h1>client_id: </h1>
+                            <h1>created_at: </h1>
+                        </div>
+                        
+                    </div>
+                    <div class="page_number">1</div>
+                    <!-- 提示现在是第几页 房间列表 -->
+                </div>
+            </div>
+            <div class="tip_button iconfont icon-tishi"></div>
+            <!-- 提示按键 按下去后 就展现出 出牌按键 以及摸牌按键 -->
+            <div CLass="tip_anjians">
+                <div class="tip_anjian" style="left:95px">A</div>
+                <div class="tip_anjian" style="left:185px">S</div>
+                <div class="tip_anjian" style="left:275px">D</div>
+                <div class="tip_anjian" style="left:365px">F</div>
+                <div class="tip_anjian" style="left:617px">1</div>
+                <div class="tip_anjian" style="left:707px">2</div>
+                <div class="tip_anjian" style="left:797px">3</div>
+                <div class="tip_anjian" style="left:884px">4</div>
+                <div class="tip_anjian tow_anjian" style="left:605px">G OR 5</div>
+            </div>
+            <div class="group_color_tip iconfont icon-dadantoushi active"></div>
+            <!-- 卡组透视按键 默认是透视的 就是显示出卡组的各个花色有几张 -->
+        </div>
+        
+    </div>
+    
+</body>
+
+</html>
