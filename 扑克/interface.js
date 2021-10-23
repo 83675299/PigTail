@@ -1,10 +1,10 @@
 var login = function(student_id, password, callback) {//登录接口
-    xml = new XMLHttpRequest();
-    var url = "http://172.17.173.97:8080/api/user/login";
-    xml.open('post', url, true);
-    xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xml.send('&student_id=' + student_id + '&password=' + password);
-    xml.onreadystatechange = function () {
+    xml = new XMLHttpRequest();//定义XMLHttpRequest对象
+    var url = "http://172.17.173.97:8080/api/user/login";//把接口的url赋值
+    xml.open('post', url, true);//使用open方法
+    xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//使用setRequestHeader方法
+    xml.send('&student_id=' + student_id + '&password=' + password);//使用send方法发送参数
+    xml.onreadystatechange = function () {//获取返回值
         var obj = JSON.parse(xml.response);
         callback(obj.data.token);
     };
