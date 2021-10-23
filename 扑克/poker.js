@@ -1,7 +1,7 @@
 
 //  系统信息
 var your_token, //接入系统时的信息
-uuid,   // 房间uid
+uuid,   // 房间uid    
 information,    
 playing_interval_id, //对局进行时的 定时器
 return_msg, //上一步操作信息
@@ -329,7 +329,16 @@ function my_main(){
             //无牌就抓 
             customEvent.key = user.operations[4];
         }else{
-            if(user.sum_number + lay.sum_number + card_group.sum_number*2 < opp.sum_number - card_group.sum_number){
+            if(card_group.sum_number==1){
+                var the_last_color;
+                var i;
+                for(i=0;i<4;i++){
+                    if(card_group.color_number[i])
+                        break;
+                }
+                if(head_color!=i)
+                customEvent.key = user.operations[4];
+            }else if(user.sum_number + lay.sum_number + card_group.sum_number*2 < opp.sum_number - card_group.sum_number){
                 // 我直接一直翻牌就能赢的话 我就一直翻牌
                 customEvent.key = user.operations[4];
             }else{
@@ -338,9 +347,9 @@ function my_main(){
                     color_p = card_group.color_number[i]/card_group.sum_number;
                 }
                 // 如果我的牌 加上卡组里的牌 比对方少 且我有超过百分之50概率 不翻到堆顶的花色牌 我就翻牌
-                if(user.sum_number+card_group.sum_number<opp.sum_number&&color_p[head_color]<0.5){
+                if(user.sum_number+card_group.sum_number<opp.sum_number&&Math.pow(parseInt(color_p[head_color],card_group.sum_number)<0.5)){
                     customEvent.key = user.operations[4];
-                }else{
+                } else{
                         //有牌就打：打得是牌组中花色最多的且手牌有的且不是放置区的最顶端花色 否则就抓牌
                         for(var i=0;i<4;i++){
                             color_number[i].number = card_group.color_number[i];
